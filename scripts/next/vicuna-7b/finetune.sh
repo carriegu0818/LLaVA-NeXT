@@ -3,6 +3,7 @@ set -x
 
 which python
 
+
 nnodes=1
 num_gpus=8
 
@@ -12,6 +13,7 @@ DATA_PATH=${DATA_ROOT}/llava/llava_sft/llava_v1_5_mix665k.json
 IMAGE_FOLDER=${DATA_ROOT}
 
 RUN_NAME='llava-next-vicuna-7b-sft'
+
 
 deepspeed --num_nodes ${nnodes} --num_gpus ${num_gpus} --master_port=10271 llava/train/train_mem.py \
     --deepspeed ./scripts/zero3.json \
